@@ -33,7 +33,7 @@ EDA can be a valuable tool in financial analysis, as it can help you identify tr
 
 By following these steps, you can use EDA to gain insights into financial data and inform investment decisions and strategic planning.
 
-/*PS I asked the Ask AI https://get-askai.app and will using it to ask questions! good questions I hope!!*/
+*PS I asked the Ask AI https://get-askai.app and will using it to ask questions! good questions I hope!!*
 
 What is compensation operations?
 
