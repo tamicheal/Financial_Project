@@ -9,7 +9,7 @@ Assists in developing, implementing and maintaining internal controls to safegua
 
 Establishes, monitors and reports on capital and operating expenditures.
 
-This is the Job details I'll work on a prject to test my level of knowleage. 
+This is the Job details I'll work on a project to test my level of knowleage. 
 
 I'll work on coding and reporting and ask as some many buiness questions as I can possible. 
 
