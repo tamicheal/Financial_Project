@@ -32,4 +32,4 @@ EDA can be a valuable tool in financial analysis, as it can help you identify tr
 7. Refine your analysis: EDA is an iterative process, so it's important to refine your analysis as you go and adjust your approach based on the insights you gain. You may need to repeat certain steps or try different techniques to get a full understanding of the data.
 
 By following these steps, you can use EDA to gain insights into financial data and inform investment decisions and strategic planning.
-PS I love you. And i asked the Ask AI app to write this for me. Get it for free --> https://get-askai.app
+PS I asked the Ask AI https://get-askai.app and will using it to ask questions! good questions I hope!!
