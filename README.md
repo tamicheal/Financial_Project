@@ -45,3 +45,6 @@ For example, a company may use a commission-based compensation plan for its sale
 
 Compensation operations may also involve setting sales targets and goals, providing sales training and support, and monitoring sales performance to ensure that sales targets are being met and that salespeople are being appropriately compensated based on their performance.
  
+##Tableau Dashboard to calculate sales revenue and process commission payments a simple dashboard than build a more complex one
+
+The Question What is the total revenue and commission payments, and show trends?
