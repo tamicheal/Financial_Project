@@ -47,4 +47,34 @@ Compensation operations may also involve setting sales targets and goals, provid
  
 ##Tableau Dashboard to calculate sales revenue and process commission payments a simple dashboard than build a more complex one
 
-The Question What is the total revenue and commission payments, and show trends?
+The Question What is the total sales revenue?
+
+What is the commission payments for each sales reps?
+
+what is the trend my month to date?
+
+next importing data into sql, Good news I have already clean data for the sales team I'm familiar with the reporting. I clean that data in MSSQL process it into Excel for more cleaning and formatting with power query. i have a tableau public dashboard will come with that link here--> @https://public.tableau.com/views/Sales_dasboard_16806600683540/Europe?:language=en-US&:display_count=n&:origin=viz_share_link
+that dashboard is not complete but I am doing the same reporting. that report only had call center data and call center sales team info.
+
+next step--
+
+Here's an example of how you could write SQL code to calculate sales revenue and commission payments for a simple commission structure:
+
+Assuming you have two tables: a "sales" table that contains information about each sale, and a "salespeople" table that contains information about each salesperson, including their commission rate.
+
+```
+-- Calculate total sales revenue
+SELECT SUM(sales_amount) AS total_sales_revenue
+FROM sales;
+
+-- Calculate commission payments
+SELECT salesperson_id, SUM(sales_amount * commission_rate) AS commission_payments
+FROM sales
+JOIN salespeople ON sales.salesperson_id = salespeople.salesperson_id
+GROUP BY salesperson_id;
+```
+
+In this example, the first query calculates the total sales revenue by summing up the sales_amount column in the sales table.
+
+The second query joins the sales table with the salespeople table on the salesperson_id column, and calculates the commission payments for each salesperson by multiplying the sales_amount by the commission_rate for each sale, and then summing up those values for each salesperson. The result is a table that shows the salesperson_id and the commission_payments for each salesperson.
+PS I will be using SQLite for EDA ops
