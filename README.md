@@ -17,7 +17,7 @@ I'll work on coding and reporting and ask as some many buiness questions as I ca
 
 EDA can be a valuable tool in financial analysis, as it can help you identify trends and patterns in financial data that can inform investment decisions and strategic planning. Here are some steps you can follow for EDA in financial analysis:
 
- <details>
+
     <summary><b>1. Define your question:</b><summary>Start by defining a clear question or hypothesis that you want to answer. For example, you may want to explore trends in a particular market or industry, or investigate the factors that are driving changes in a company's financial performance.
 
 2. Gather and clean the data: Collect the relevant financial data and ensure that it is clean and accurate. This may involve removing duplicates, handling missing values, and correcting errors.
