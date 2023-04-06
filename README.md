@@ -13,7 +13,7 @@ This is the Job details I'll work on a project to test my level of knowleage.
 
 I'll work on coding and reporting and ask as some many buiness questions as I can possible. 
 
-EDA Exploration Data analysis 
+## EDA Exploration Data analysis
 
 EDA can be a valuable tool in financial analysis, as it can help you identify trends and patterns in financial data that can inform investment decisions and strategic planning. Here are some steps you can follow for EDA in financial analysis:
 
