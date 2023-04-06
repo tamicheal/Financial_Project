@@ -1,4 +1,4 @@
-# Interview_Role
+# Interview Role
 I have an interview for a analyst roles on the financial team to analyst data.
 
 Responsible for assisting in overseeing daily business operations and ensures compliance with Company policies and procedures. Ensures internal control adherence and provides audit support. Manages the financial affairs of the system by implementing and monitoring internal controls. Prepares financial plans and reports. Conducts studies and makes recommendations to ensure the effective and cost-efficient operation of the Company. Provides necessary leadership and guidance throughout the Business Operations department. Customarily and regularly directs the work of at least two or more other full-time employees or their equivalent.
