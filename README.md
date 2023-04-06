@@ -79,8 +79,7 @@ What is the trend my month to date?
 
 Next importing data into sql, Good news I have already clean data for the sales team I'm familiar with the reporting. I clean that data in MSSQL process it into Excel for more cleaning and formatting with power query. I have a tableau public dashboard step 
 
-> **Link Here**https://public.tableau.com/views/Sales_dasboard_16806600683540/Europe?:language=en-US&:display_count=n&:origin=viz_share_link
-that dashboard is not complete but I am doing the same reporting. That report only had call center data and call center sales team info.
+> **Link Here** https://public.tableau.com/views/Sales_dasboard_16806600683540/Europe?:language=en-US&:display_count=n&:origin=viz_share_link that dashboard is not complete but I am doing the same reporting. That report only had call center data and call center sales team info.
 
 ## Next Steps
 
