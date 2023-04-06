@@ -20,7 +20,7 @@ EDA can be a valuable tool in financial analysis, as it can help you identify tr
 <details>
  <summary><b>1. Define your question:</b><summary>
     Start by defining a clear question or hypothesis that you want to answer. For example, you may want to explore trends in a particular market or industry, or investigate the factors that are driving changes in a company's financial performance.
-
+</details>
 
 <details>
  <summary><b>2. Gather and clean the data:</b><summary>
