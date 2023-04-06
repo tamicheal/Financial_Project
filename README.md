@@ -35,7 +35,7 @@ By following these steps, you can use EDA to gain insights into financial data a
 
 *PS I asked the Ask AI https://get-askai.app and will using it to ask questions! good questions I hope!!*
 
-What is compensation operations?
+## What is compensation operations?
 
 In the context of business or employment, compensation generally refers to the total package of salary, benefits, and other forms of payment that an employee receives from their employer in exchange for their work. Compensation operations could refer to the processes and systems used by a company to manage and administer employee compensation, such as calculating pay rates, managing benefits programs, and tracking employee attendance and performance. Is there a specific context or industry you had in mind?
 
@@ -45,7 +45,8 @@ For example, a company may use a commission-based compensation plan for its sale
 
 Compensation operations may also involve setting sales targets and goals, providing sales training and support, and monitoring sales performance to ensure that sales targets are being met and that salespeople are being appropriately compensated based on their performance.
  
-#Tableau Dashboard to calculate sales revenue and process commission payments a simple dashboard than
+## Tableau Dashboard 
+To calculate sales revenue and process commission payments a simple dashboard than
 build a more complex one
 
 The Question What is the total sales revenue?
@@ -57,7 +58,7 @@ What is the trend my month to date?
 Next importing data into sql, Good news I have already clean data for the sales team I'm familiar with the reporting. I clean that data in MSSQL process it into Excel for more cleaning and formatting with power query. i have a tableau public dashboard will come with that link here--> https://public.tableau.com/views/Sales_dasboard_16806600683540/Europe?:language=en-US&:display_count=n&:origin=viz_share_link
 that dashboard is not complete but I am doing the same reporting. that report only had call center data and call center sales team info.
 
-next step--
+## Next Steps
 
 Here's an example of how you could write SQL code to calculate sales revenue and commission payments for a simple commission structure:
 
