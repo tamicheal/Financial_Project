@@ -1,4 +1,4 @@
-#Interview Role
+# Interview Role
 I have an interview for a analyst roles on the financial team to analyst data.
 
 Responsible for assisting in overseeing daily business operations and ensures compliance with Company policies and procedures. Ensures internal control adherence and provides audit support. Manages the financial affairs of the system by implementing and monitoring internal controls. Prepares financial plans and reports. Conducts studies and makes recommendations to ensure the effective and cost-efficient operation of the Company. Provides necessary leadership and guidance throughout the Business Operations department. Customarily and regularly directs the work of at least two or more other full-time employees or their equivalent.
@@ -13,7 +13,7 @@ This is the Job details I'll work on a project to test my level of knowleage.
 
 I'll work on coding and reporting and ask as some many buiness questions as I can possible. 
 
-#EDA Exploration Data analysis
+# EDA Exploration Data analysis
 
 EDA can be a valuable tool in financial analysis, as it can help you identify trends and patterns in financial data that can inform investment decisions and strategic planning. Here are some steps you can follow for EDA in financial analysis:
 
@@ -57,7 +57,7 @@ By following these steps, you can use EDA to gain insights into financial data a
 > **PS** I asked the Ask AI https://get-askai.app and will using it to ask questions! good questions
 I hope!!
 
-#What is compensation operations?
+# What is compensation operations?
 
 In the context of business or employment, compensation generally refers to the total package of salary, benefits, and other forms of payment that an employee receives from their employer in exchange for their work. Compensation operations could refer to the processes and systems used by a company to manage and administer employee compensation, such as calculating pay rates, managing benefits programs, and tracking employee attendance and performance. Is there a specific context or industry you had in mind?
 
