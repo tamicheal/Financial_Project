@@ -20,17 +20,24 @@ EDA can be a valuable tool in financial analysis, as it can help you identify tr
 
  <summary><b>1. Define your question:</b><summary>Start by defining a clear question or hypothesis that you want to answer. For example, you may want to explore trends in a particular market or industry, or investigate the factors that are driving changes in a company's financial performance.
 
+
  <summary><b>2. Gather and clean the data:</b><summary>Collect the relevant financial data and ensure that it is clean and accurate. This may involve removing duplicates, handling missing values, and correcting errors.
+
 
  <summary><b>3. Calculate summary statistics:</b><summary>Use SQL functions such as `SUM`, `AVG`, `MIN`, and `MAX` to calculate summary statistics for relevant variables, such as revenue, expenses, profits, and debt.
 
+
  <summary><b>4. Create visualizations:</b><summary>Use SQL functions such as `GROUP BY` and `ORDER BY` to create visualizations such as line charts, bar charts, and scatter plots. These can help you identify trends and patterns in the data, such as seasonal fluctuations or correlations between variables.
+
 
  <summary><b>5. Conduct ratio analysis:</b><summary>Use SQL functions to calculate and analyze financial ratios, such as liquidity ratios, profitability ratios, and debt ratios, which can provide insights into a company's financial performance and health.
 
+
  <summary><b>6. Identify outliers and anomalies:</b><summary>Use SQL functions such as `COUNT` and `GROUP BY` to identify outliers and anomalies in the data, which may require further investigation.
 
+
  <summary><b>7. Refine your analysis:</b><summary>EDA is an iterative process, so it's important to refine your analysis as you go and adjust your approach based on the insights you gain. You may need to repeat certain steps or try different techniques to get a full understanding of the data.
+
 
 By following these steps, you can use EDA to gain insights into financial data and inform investment decisions and strategic planning.
 
