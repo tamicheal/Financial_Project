@@ -58,3 +58,33 @@ The migration process for moving a database from MSSQL to Azure typically involv
 It is essential to plan the migration process carefully, considering factors such as database size, network connectivity, and downtime requirements. Additionally, it is recommended to test the migration process in a non-production environment before performing the actual migration to minimize the risk of data loss or downtime.
 
 I’m looking to create real world experiences from start to finish. I Have an Azure database already up and running. I’ll be working with it
+
+If you have a sample database that you can use for testing and experimentation, that can be a great way to get started with Azure migration services. You can use the sample database to try out different migration tools and strategies, and to get a better understanding of how your on-premises database will behave in a cloud environment.
+
+Here are some steps you can follow to get started with migrating your sample database to Azure:
+
+1. Assess the database: Use one of the assessment tools I mentioned earlier (such as Azure Migrate, Data Migration Assistant, or Azure Database Migration Service) to assess your sample database. This will help you identify any compatibility issues and estimate the costs of running the database in Azure.
+
+2. Choose a migration strategy: Based on the results of the assessment, choose a migration strategy that's appropriate for your sample database. For example, you might choose to use the Azure Database Migration Service to perform an online migration, or you might choose to use the Data Migration Assistant to generate a migration script that you can manually execute.
+
+3. Perform the migration: Once you've chosen a migration strategy, perform the migration on your sample database. Be sure to test the database thoroughly to ensure that it's functioning as expected.
+
+4. Monitor and optimize: After the migration is complete, monitor the performance of the database in Azure and optimize the resource usage as needed to ensure optimal performance.
+
+By using your sample database to experiment with Azure migration services, you can gain valuable experience and confidence in the migration process, which can help you when it comes time to migrate your production databases.
+
+This process has been a learning experience for sure!!
+
+Some common issues that my come during the assessment and migration process;
+
+1. Compatibility issues: Incompatibilities between the source and target environments can cause migration failures. For example, if the database schema or data types are not supported in the target environment, the migration may fail.
+
+2. Insufficient resources: If the target environment does not have enough resources to support the migrated database, the migration may fail. This can include issues such as insufficient storage, insufficient memory, or insufficient network bandwidth.
+
+3. Network issues: Network connectivity issues can cause migrations to fail. For example, if there is network congestion or packet loss during the migration process, it can cause the migration to fail.
+
+4. Security issues: If the security settings in the target environment are not configured correctly, the migration may fail. This can include issues such as incorrect firewall settings or incorrect permissions.
+
+5. Migration tool issues: Issues with the migration tool itself can also cause migrations to fail. For example, if the tool encounters a bug or error during the migration process, it can cause the migration to fail.
+
+To avoid migration failures, it's important to thoroughly assess the source environment before beginning the migration process, and to carefully plan and execute the migration process using a reputable migration tool. It's also a good idea to perform thorough testing and validation after the migration is complete to ensure that the migrated database is functioning as expected.
