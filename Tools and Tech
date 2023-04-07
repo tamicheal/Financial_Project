@@ -1,0 +1,60 @@
+To add to update on the tools I will be using, I plan on taking my database off-premises using Azure and Azure’s database features.
+
+TOOL
+1.Git
+2.GitBash
+3.GitHub
+4.Azure
+5.MSSQL
+6.AI
+7.DReavor
+8.Excel
+9.Tableau
+
+I’ll go through the issues I ran into along the way.  
+
+Ran into issues and which I was able to learn about formatting databases before transferring. 
+
+A tool Azure offer to assist is Call “Azure SQL Database Migration Tool” follow the steps below.
+
+The Azure SQL Database Migration Assistant tool can be downloaded from the Azure portal. Here's how to download it:
+
+1. Go to the Azure portal (https://portal.azure.com/) and sign in with your Azure account.
+
+2. Click on "Create a resource" in the left-hand menu.
+
+3. Search for "Azure Database Migration Service" in the search box and select it from the results.
+
+4. Click on "Create" to create a new instance of the Azure Database Migration Service.
+
+5. In the "Create Migration Service" blade, specify the subscription, resource group, and other details as required.
+
+6. In the "Networking" section, configure the virtual network and subnet for the migration service.
+
+7. In the "Advanced" section, select the "Enable Azure Service Endpoints" option.
+
+8. Click on "Review + create" to review the configuration and create the migration service.
+
+9. Once the migration service is created, go to the "Tools" section and download the Azure SQL Database Migration Assistant tool.
+
+Note that the Azure SQL Database Migration Assistant tool is also available for download separately from the Azure portal. You can search for "Azure SQL Database Migration Assistant" on the Microsoft website and download it from there.
+
+Next Steps
+
+The migration process for moving a database from MSSQL to Azure typically involves the following steps:
+
+1. Assess the database: Before migrating the database, it is essential to assess the database's compatibility with Azure SQL Database. This involves checking the database schema, objects, and features to ensure they are supported in Azure.
+
+2. Create an Azure SQL Database: Create an Azure SQL Database instance in the Azure portal, which will serve as the destination for the migrated database.
+
+3. Export the database: Export the database from the on-premises SQL Server into a BACPAC file. This file contains the database schema and data.
+
+4. Transfer the BACPAC file: Transfer the BACPAC file to Azure, either through the Azure portal or using Azure Data Migration Service (DMS).
+
+5. Import the database: Import the BACPAC file into the Azure SQL Database instance. This step creates the database schema and data in the Azure SQL Database.
+
+6. Test and validate: After the migration is complete, test the database to ensure that it works correctly and validate that all the data has been successfully migrated.
+
+It is essential to plan the migration process carefully, considering factors such as database size, network connectivity, and downtime requirements. Additionally, it is recommended to test the migration process in a non-production environment before performing the actual migration to minimize the risk of data loss or downtime.
+
+I’m looking to create real world experiences from start to finish. I Have an Azure database already up and running. I’ll be working with it
