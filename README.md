@@ -50,7 +50,9 @@ Compensation operations may also involve setting sales targets and goals, provid
 To calculate sales revenue and process commission payments a simple dashboard then
 build a more complex one
 
-The Question What is the total sales revenue?
+##The Question 
+
+What is the total sales revenue?
 
 What is the commission payments for each sales reps?
 
