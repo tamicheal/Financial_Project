@@ -1,0 +1,102 @@
+Financial project
+The question I want to review before diving into sql
+
+The Question 
+
+**Keep in mind**Be careful not to mix up or confuse the six stages of the data life cycle (Plan, Capture, Manage, Analyze, Archive, and Destroy) with the six phases of the data analysis life cycle (Ask, Prepare, Process, Analyze, Share, and Act). They shouldn't be used or referred to interchangeably.
+
+
+What is the total sales revenue?
+
+What tables have sales revenue,
+I’ll run ‘SELECT’ statements to explore the data I am familiar with the database itself.
+
+
+- SalesOrderHeader: Contains information about each sales order, such as the order date, customer information, and total due amount.
+- SalesOrderDetail: Contains information about each product sold in a sales order, such as the product ID, quantity, and unit price.
+- SalesTerritory: Contains information about each sales territory, including the name and sales quota.
+- SalesPerson: Contains information about each salesperson, including their name, job title, and sales quota.
+- SalesPersonQuotaHistory: Contains information about the sales quota history for each salesperson.
+- SalesTaxRate: Contains information about the tax rate for each state or province.
+
+These tables can be joined together using primary and foreign key relationships to analyze sales revenue by various dimensions, such as product, customer, sales territory, and time period.
+
+Here's an example SQL code that demonstrates how to join a sales or transactions table with a product or inventory table to calculate the sales revenue by product:
+
+```
+SELECT 
+  p.product_name, 
+  SUM(s.quantity * s.unit_price) AS total_revenue
+FROM 
+  sales_table s
+JOIN 
+  product_table p
+ON 
+  s.product_id = p.product_id
+GROUP BY 
+  p.product_name;
+```
+
+In this example, we assume that there is a `sales_table` containing information about each sale transaction, including the `product_id`, `quantity`, and `unit_price`, and a `product_table` containing information about each product, including the `product_id` and `product_name`. 
+
+The `JOIN` clause is used to join the two tables together based on the `product_id` column. The `GROUP BY` clause is used to group the resulting rows by `product_name`, so that the `SUM` function can be used to calculate the total revenue for each product. 
+
+Note that the above code is just an example, and the actual SQL code you would use may vary depending on your specific database schema and requirements. 
+
+What is the commission payments for each sales reps?
+
+This I formation should be in the HR department hands so I will query there as well and ‘JOIN’ what is needed.
+
+I will need to ‘GROUP’ them by sales representatives.
+
+What tables have this information and how is commission payments calculated by percentage?
+
+What is the trend by month to date?
+
+To calculate the trend by month for sales, you can use a combination of SQL and Excel. Here are the steps:
+
+1. In SQL, write a query to retrieve the monthly sales data. The query should group the sales by month and calculate the total sales for each month. For example:
+
+   ```
+   SELECT YEAR(OrderDate) AS SalesYear, MONTH(OrderDate) AS SalesMonth, SUM(TotalDue) AS MonthlySales
+   FROM Sales.SalesOrderHeader
+   GROUP BY YEAR(OrderDate), MONTH(OrderDate)
+   ORDER BY SalesYear, SalesMonth
+   ```
+
+   This query retrieves the year, month, and total sales for each sales order header in the AdventureWorks database, groups the data by year and month, and calculates the sum of the TotalDue column for each group.
+
+2. Export the query result to a CSV file.
+
+3. Open the CSV file in Excel and create a chart to display the monthly sales trend. To create a chart, select the SalesMonth and MonthlySales columns and then click the Insert tab in the Excel ribbon. Choose a chart type, such as a line chart, and customize the chart as needed.
+
+4. To calculate the trend line for the chart, select the chart and then click the Chart Design tab in the Excel ribbon. Click the Add Chart Element button and choose Trend-line > Linear.
+
+5. The trend-line equation and R-squared value will now appear on the chart. The equation represents the slope of the trend-line, which indicates the rate of change in sales over time. The R-squared value indicates how well the trend-line fits the data, with higher values indicating a better fit.
+
+By following these steps, you can calculate and visualize the monthly sales trend for AdventureWorks data, and determine the slope and goodness of fit of the trend-line.
+
+Tableau Steps
+
+Sure, here's how you can calculate the trend by month for sales in Tableau:
+
+1. Connect to your data source, which in this case would be the AdventureWorks database.
+
+2. Create a new worksheet and drag the Order Date field to the Columns shelf.
+
+3. Change the date format to Month/Year by right-clicking the Order Date field and selecting "Month/Year" under "Default Properties".
+
+4. Drag the Total Due field to the Rows shelf to display the monthly sales data.
+
+5. To calculate the trend line, right-click on the Total Due axis and select "Add Trend Line".
+
+6. In the "Add Trend Line" dialog box, select "Linear" as the trend type and check the box for "Show R-squared value on tooltip" to display the goodness of fit on the chart.
+
+7. Click OK to add the trend line to the chart.
+
+8. You can also add a reference line to the chart to show the average sales for the entire period. To do this, right-click on the Total Due axis and select "Add Reference Line". In the "Add Reference Line" dialog box, select "Average" as the type and click OK.
+
+9. Customize the chart as needed, such as adding a title, adjusting the axis labels, and formatting the trend line and reference line.
+
+With these steps, you can create a chart in Tableau that shows the monthly sales trend and calculates the trend line.
+
