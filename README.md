@@ -85,19 +85,4 @@ In this example, the first query calculates the total sales revenue by summing u
 
 The second query joins the sales table with the salespeople table on the salesperson_id column, and
 calculates the commission payments for each salesperson by multiplying the sales_amount by the commission_rate for each sale, and then summing up those values for each salesperson. The result is a table that shows the salesperson_id and the commission_payments for each salesperson.
-PS I will be using SQLite for EDA ops
-that code is below
-
-```
--- Calculate total sales revenue
-SELECT SUM(sales_amount) AS total_sales_revenue
-FROM sales;
-
--- Calculate commission payments
-SELECT salesperson_id, SUM(sales_amount * commission_rate) AS commission_payments
-FROM sales
-JOIN salespeople ON sales.salesperson_id = salespeople.salesperson_id
-GROUP BY salesperson_id;
-```
-
-In SQLite, you would execute these queries using a SQLite client or in the SQLite command-line interface. Make sure to replace "sales" and "salespeople" with the names of your actual tables,and "sales_amount" and "commission_rate" with the names of the columns in your tables that contain this information.
+PS I will be using SQLite for EDA ops also Moving Database to Cloud base SQL Azure.
