@@ -1,0 +1,63 @@
+1. Customers: This table contains information about the customers, such as their name, address, email, phone number, etc. 
+The result if you want to skip the reading, I am looking to join all customer information SQL syntax,
+My thoughts are the Business customer are separate from the Customer I found we have 702 customerIDs missing, exporting this to Excel Both CSV,TXT, I am using Azure and TSQL hopefully at a basic level. 
+--SELECT *
+FROM [Sales].[Customer] AS C
+LEFT JOIN [Sales].[CustomerPII] AS CP ON C.CustomerID = CP.CustomerID;--
+
+SELECT COUNT(CustomerID)
+FROM [Sales].[Customer]; --THE TOTAL CUSTOMER IDs we have are 19820 SELECT COUNT(CustomerID) AND CHECK FOR DUPLICATES  COUNT(DISTINCT CustomerID)  --
+/* Next I would like to get the names of the looking at the Keys I can make another query for names*/
+SELECT COUNT(CustomerID)
+FROM [Sales].[CustomerPII];-- [Sales].[CustomerPII] Has more information like customer name but the count total is 19118--
+/* we can run queries to under why this count is different we have more customer IDs in one table--
+--To find out what is missing from one of the tables based on the CustomerID column, you can use a LEFT JOIN or RIGHT JOIN to join the two tables together and identify the unmatched rows. Here's an example SQL code that uses a LEFT JOIN to find the CustomerIDs that are in [Sales].[Customer] table but not in [Sales].[CustomerPII] table:
+SELECT C.CustomerID 
+FROM [Sales].[Customer] AS C
+ LEFT JOIN [Sales].[CustomerPII] AS CP 
+ON C.CustomerID = CP.CustomerID 
+WHERE CP.CustomerID IS NULL; 
+In this code, the LEFT JOIN joins the [Sales].[Customer] table on the left with the [Sales].[CustomerPII] table on the right using the CustomerID column as the join condition. The AS keyword is used to give each table an alias to make the code easier to read. The WHERE clause filters the results to only show the rows where the CustomerID in [Sales].[Customer] is not found in [Sales].[CustomerPII]. The IS NULL operator checks for null values in the [Sales].[CustomerPII] table, which indicates that the corresponding CustomerID was not found in that table.
+You can modify the code by swapping the table names and changing the join type to a RIGHT JOIN to find the CustomerIDs that are in [Sales].[CustomerPII] table but not in [Sales].[Customer] table.
+So what does this teach me;
+Knowing which CustomerIDs are missing from one of the tables can provide useful insights into the completeness and accuracy of the data. Here are a few things you can learn from this information:
+1.	Data quality issues: If there are many missing CustomerIDs, it could indicate that there are data quality issues in one of the tables. For example, there may have been data entry errors or data was lost during data migration or integration.
+2.	Data completeness: Knowing which CustomerIDs are missing can help you identify gaps in the data. For example, you may find that the missing CustomerIDs are from a particular region or demographic, which could indicate that the data is incomplete or biased.
+3.	Data integration issues: If the missing CustomerIDs are due to data integration issues, you may need to investigate how the data is being integrated and identify any errors or inconsistencies in the data.
+4.	Data modeling issues: If the missing CustomerIDs are due to data modeling issues, you may need to review the database schema and make sure it accurately reflects the relationships between the tables and the data being stored.
+Overall, identifying the missing CustomerIDs can help you identify potential issues with the data and take steps to address them, such as improving data quality, filling gaps in the data, or modifying the data integration or modeling approach.
+From Now I will not look into this I will write query and send that information up to the team total to look into further. Find the difference between the count of rows in two tables, [Sales].[Customer] and [Sales].[CustomerPII], based on the CustomerID column:
+
+SELECT COUNT(*) AS CustomerCount, 
+       (SELECT COUNT(*) FROM [Sales].[CustomerPII]) AS CustomerPIICount, 
+       COUNT(*) - (SELECT COUNT(*) FROM [Sales].[CustomerPII]) AS CountDifference
+FROM [Sales].[Customer];
+In this code, the COUNT(*) function is used to count the number of rows in the [Sales].[Customer] table. The subquery (SELECT COUNT(*) FROM [Sales].[CustomerPII]) counts the number of rows in the [Sales].[CustomerPII] table. The AS keyword is used to give each count a column alias to make the code easier to read. The CountDifference column is calculated by subtracting the count of rows in [Sales].[CustomerPII] table from the count of rows in [Sales].[Customer] table.
+
+This code returns a single row with three columns: CustomerCount, CustomerPIICount, and CountDifference. The CountDifference column shows the difference between the count of rows in [Sales].[Customer] and [Sales].[CustomerPII] tables. If the value is positive, it means that [Sales].[Customer] has more rows than [Sales].[CustomerPII]. If the value is negative, it means that [Sales].[CustomerPII] has more rows than [Sales].[Customer]. If the value is zero, it means that the two tables have the same number of rows.
+The output is below 702 customerIDs not in the customer tables.
+--CustomerCount,CustomerPIICount,CountDifference
+19820,19118,702—
+-To end here are the query I ran for this 
+/* To start I want to run some queries to grab sell inform to to the total sale revenue*/
+SELECT COUNT(CustomerID)
+FROM [Sales].[Customer]; --THE TOTAL CUSTOMER IDs we have are 19820 SELECT COUNT(CustomerID) AND CHECK FOR DUPLICATES  COUNT(DISTINCT CustomerID)  --
+/* Next I would like to get the names of the looking at the Keys I can make another query for names*/
+SELECT COUNT(CustomerID)
+FROM [Sales].[CustomerPII];-- [Sales].[CustomerPII] Has more information like customer name but the count total is 19118--
+/* we can run queries to under why this count is different we have more customer IDs in one table*/
+
+SELECT C.CustomerID
+FROM [Sales].[Customer] AS C
+LEFT JOIN [Sales].[CustomerPII] AS CP ON C.CustomerID = CP.CustomerID
+WHERE CP.CustomerID IS NULL;
+
+SELECT COUNT(*) AS CustomerCount, 
+       (SELECT COUNT(*) FROM [Sales].[CustomerPII]) AS CustomerPIICount, 
+       COUNT(*) - (SELECT COUNT(*) FROM [Sales].[CustomerPII]) AS CountDifference
+FROM [Sales].[Customer];
+It turns out that the Business customer count is 701 I am still missing one customer which is a better short. I will track that down shortly, I need to focus on a few things and remind myself that I am looking to work with the “Business Sales Team” so this is just to fully explore the data. Below is the syntax 
+SELECT COUNT([BusinessEntityID]) As Business_count
+  FROM [AdventureWorks2016_EXT].[Sales].[Store];
+Output 
+701,
