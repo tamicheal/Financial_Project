@@ -56,10 +56,37 @@ SELECT COUNT(*) AS CustomerCount,
        (SELECT COUNT(*) FROM [Sales].[CustomerPII]) AS CustomerPIICount, 
        COUNT(*) - (SELECT COUNT(*) FROM [Sales].[CustomerPII]) AS CountDifference
 FROM [Sales].[Customer];
-It turns out that the Business customer count is 701 I am still missing one customer which is a better start. I will track that down shortly, I need to focus on a few things and remind myself that I am looking to work with the “Business Sales Team” so this is just to fully explore the data. Below is the syntax 
+It turns out that the Business customer count is 701 I am still missing one customer which is a better short. I will track that down shortly, I need to focus on a few things and remind myself that I am looking to work with the “Business Sales Team” so this is just to fully explore the data. Below is the syntax 
 SELECT COUNT([BusinessEntityID]) As Business_count
   FROM [AdventureWorks2016_EXT].[Sales].[Store];
 Output 
 701,
-
-let's continue exploring questions
+##Not to get lost in data I want to pull all data for the Business sales First I want to now what reps sales to Business below give me a list I pulled from the sales.header table 
+  SELECT DISTINCT [SalesPersonID]
+  FROM [AdventureWorks2016_EXT].[Sales].[Store]
+  LEFT JOIN [Sales].[SalesPerson]
+  ON [Sales].[Store].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID];
+This SQL query returns the unique IDs of the salespersons who are associated with a store in the AdventureWorks2016_EXT database. It uses a left join to combine the Store and SalesPerson tables based on the BusinessEntityID column.
+Next Step:
+Introduction
+This report aims to give an overview of the sales performance of our company and explore the key factors that affect it. The report will address the following questions:
+•	Who are our salespersons and where do they sell?
+•	When do they sell and how much do they sell?
+•	How can we use SQL techniques to validate and improve the data and the sales process?
+The report is based on the data available in the tables and views that I have created in the database.
+Body
+To compile a list of who, where, when, what, and why, I used the following TSQL queries:
+•	To find out who sells and where they sell, I used a join query to combine the SalesPerson and Store tables based on the BusinessEntityID column and selected the SalesPersonID, FirstName, LastName, and StoreName columns. For example:
+“SELECT sp.SalesPersonID, sp.FirstName, sp.LastName, s.StoreName FROM Sales.SalesPerson AS sp JOIN Sales.Store AS s ON sp.BusinessEntityID = s.BusinessEntityID;”
+•	To find out when and how much they sell, I used a join query to combine the SalesOrderHeader and SalesOrderDetail tables based on the SalesOrderID column and selected the SalesPersonID, OrderDate, and TotalDue columns. I also used a group by clause to group the results by SalesPersonID and OrderDate and a sum function to calculate the total amount of sales for each group. For example:
+“SELECT soh.SalesPersonID, soh.OrderDate, SUM(sod.TotalDue) AS TotalSales FROM Sales.SalesOrderHeader AS soh JOIN Sales.SalesOrderDetail AS sod ON soh.SalesOrderID = sod.SalesOrderID GROUP BY soh.SalesPersonID, soh.OrderDate;”
+•	To validate the data and check for any errors or inconsistencies, I used SQL techniques such as constraints, triggers, functions, and stored procedures. For example, I used a check constraint to ensure that the TotalDue column is always positive:
+“ALTER TABLE Sales.SalesOrderDetail ADD CONSTRAINT CK_TotalDue CHECK (TotalDue >= 0);”
+I used a trigger to log any changes made to the SalesOrderHeader table:
+“CREATE TRIGGER trg_SalesOrderHeader_Log ON Sales.SalesOrderHeader AFTER INSERT, UPDATE, DELETE AS BEGIN INSERT INTO Sales.SalesOrderHeader_Log (SalesOrderID, RevisionNumber, OrderDate, DueDate, ShipDate, Status, OnlineOrderFlag, SalesOrderNumber, PurchaseOrderNumber, AccountNumber, CustomerID, SalesPersonID, TerritoryID, BillToAddressID, ShipToAddressID, ShipMethodID, CreditCardID, CreditCardApprovalCode, CurrencyRateID, SubTotal, TaxAmt, Freight, TotalDue, Comment, ModifiedDate) SELECT * FROM inserted; END;”
+I used a function to calculate the commission for each salesperson based on their sales amount:
+“CREATE FUNCTION fn_Commission (@SalesAmount DECIMAL(19,4)) RETURNS DECIMAL(19,4) AS BEGIN DECLARE @Commission DECIMAL(19,4); IF @SalesAmount < 10000 SET @Commission = @SalesAmount * 0.05; ELSE IF @SalesAmount < 50000 SET @Commission = @SalesAmount * 0.1; ELSE SET @Commission = @SalesAmount * 0.15; RETURN @Commission; END;”
+I used a stored procedure to generate a monthly sales report:
+“CREATE PROCEDURE sp_MonthlySalesReport (@Month INT) AS BEGIN SELECT sp.FirstName + ’ ’ + sp.LastName AS SalesPersonName, s.StoreName AS StoreName, SUM(sod.TotalDue) AS TotalSales, dbo.fn_Commission(SUM(sod.TotalDue)) AS Commission FROM Sales.SalesPerson AS sp JOIN Sales.Store AS s ON sp.BusinessEntityID = s.BusinessEntityID JOIN Sales.SalesOrderHeader AS soh ON sp.SalesPersonID = soh.SalesPersonID JOIN Sales.SalesOrderDetail AS sod ON soh.SalesOrderID = sod.SalesOrderID WHERE MONTH(soh.OrderDate) = @Month GROUP BY sp.FirstName + ’ ’ + sp.LastName, s.StoreName; END;”
+Conclusion
+The report reveals that our sales performance depends on various factors such as the salesperson, the store location, and the order date. The report also shows how SQL techniques can help us manage, validate, and analyze the data more effectively and accurately.
