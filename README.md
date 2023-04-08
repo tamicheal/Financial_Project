@@ -56,7 +56,7 @@ What is the total sales revenue?
 
 What is the commission payments for each sales reps?
 
-What is the trend my month to date?
+What is the trend by month to date?
 
 Next importing data into sql, Good news I have already clean data for the sales team I'm familiar with the reporting. I clean that data in MSSQL process it into Excel for more cleaning and formatting with power query. I have a tableau public dashboard step 
 
