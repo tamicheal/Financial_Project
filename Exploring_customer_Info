@@ -56,8 +56,10 @@ SELECT COUNT(*) AS CustomerCount,
        (SELECT COUNT(*) FROM [Sales].[CustomerPII]) AS CustomerPIICount, 
        COUNT(*) - (SELECT COUNT(*) FROM [Sales].[CustomerPII]) AS CountDifference
 FROM [Sales].[Customer];
-It turns out that the Business customer count is 701 I am still missing one customer which is a better short. I will track that down shortly, I need to focus on a few things and remind myself that I am looking to work with the “Business Sales Team” so this is just to fully explore the data. Below is the syntax 
+It turns out that the Business customer count is 701 I am still missing one customer which is a better start. I will track that down shortly, I need to focus on a few things and remind myself that I am looking to work with the “Business Sales Team” so this is just to fully explore the data. Below is the syntax 
 SELECT COUNT([BusinessEntityID]) As Business_count
   FROM [AdventureWorks2016_EXT].[Sales].[Store];
 Output 
 701,
+
+let's continue exploring questions
