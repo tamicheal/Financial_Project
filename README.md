@@ -87,4 +87,5 @@ In this example, the first query calculates the total sales revenue by summing u
 
 The second query joins the sales table with the salespeople table on the salesperson_id column, and
 calculates the commission payments for each salesperson by multiplying the sales_amount by the commission_rate for each sale, and then summing up those values for each salesperson. The result is a table that shows the salesperson_id and the commission_payments for each salesperson.
-PS I will be using SQLite for EDA ops also Moving Database to Cloud base SQL Azure.
+--PS I will be using SQLite for EDA ops also Moving Database to Cloud base SQL Azure. 
+I learned very quickly this is not a simple move, I will come back to this and work on a project to take serve offline, I have a mentor who work in database system admin he will like to help do the migration in AZURE so this is on hold for now.---
