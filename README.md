@@ -52,6 +52,8 @@ build a more complex one
 
 ## The Questions
 
+To limit the scope of work I need to focus on Buiness Sales Team Info, this is important to not get lost in SQL!!
+
 What is the total sales revenue?
 
 What is the commission payments for each sales reps?
