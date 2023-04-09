@@ -252,3 +252,71 @@ The first LEFT JOIN clause specifies the first join condition: [HumanResources].
 The second LEFT JOIN clause specifies the second join condition: [Person].[Person].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID], which links the resulting table to the [Person].[Person] table on the BusinessEntityID column.
 The WHERE clause filters the result set based on the specified condition. In this case, it filters the result set to only include rows where BusinessEntityID matches between the [HumanResources].[Employee] and [Sales].[SalesPerson] tables.
 The semicolon ; terminates the query. Although it is optional in some scenarios, it is good practice to include it to avoid syntax errors when multiple queries are executed together.
+
+Now we clean the data let me show the three lines I used, to note this can also be better there is many ways to do this;
+
+1.
+Selecting job title, business entity ID, first name, last name, commission percentage, bonus, sales quota, sales year to date and sales last year
+SELECT [HumanResources].[Employee].[JobTitle]
+    ,[HumanResources].[Employee].BusinessEntityID
+    ,[Person].[Person].FirstName
+    ,[LastName]
+    ,[CommissionPct]
+    ,[Bonus]
+    ,[SalesQuota]
+    ,[SalesYTD]
+    ,[SalesLastYear]
+FROM [HumanResources].[Employee]
+-- Left join with SalesPerson table on BusinessEntityID
+LEFT JOIN [Sales].[SalesPerson]
+ON [HumanResources].[Employee].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID]
+-- Left join with Person table on BusinessEntityID
+LEFT JOIN [Person].[Person]
+ON [Person].[Person].BusinessEntityID = [Sales].[SalesPerson].[BusinessEntityID]
+-- Filter rows where BusinessEntityID from Employee table matches BusinessEntityID from SalesPerson table
+WHERE [HumanResources].[Employee].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID];
+
+2.
+SELECT [HumanResources].[Employee].[JobTitle] AS 'Job Title'
+    ,[HumanResources].[Employee].BusinessEntityID AS 'Business Entity ID'
+    ,CONCAT([Person].[Person].FirstName, ', ', [LastName]) AS 'Full Name'
+    ,[CommissionPct] * 100 AS 'Commission Percentage'
+    ,[Bonus] AS Bonus
+    ,[SalesQuota] AS 'Sales Quota'
+    ,ROUND([SalesYTD], 0) AS 'Sales Year To Date'
+    ,ROUND([SalesLastYear], 0) AS 'Sales Last Year'
+FROM [HumanResources].[Employee]
+-- Left join with SalesPerson table on BusinessEntityID
+LEFT JOIN [Sales].[SalesPerson]
+ON [HumanResources].[Employee].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID]
+-- Left join with Person table on BusinessEntityID
+LEFT JOIN [Person].[Person]
+ON [Person].[Person].BusinessEntityID = [Sales].[SalesPerson].[BusinessEntityID]
+-- Filter rows where BusinessEntityID from Employee table matches BusinessEntityID from SalesPerson table
+WHERE [HumanResources].[Employee].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID];
+
+3.
+SELECT 
+    E.JobTitle AS 'Job Title',
+    E.BusinessEntityID AS 'Business Entity ID',
+    CONCAT(P.FirstName, ', ', P.LastName) AS 'Full Name',
+    S.CommissionPct * 100 AS 'Commission Percentage',
+    S.Bonus AS Bonus,
+    S.SalesQuota AS 'Sales Quota',
+    ROUND(S.SalesYTD, 0) AS 'Sales Year To Date',
+    ROUND(S.SalesLastYear, 0) AS 'Sales Last Year'
+FROM 
+    HumanResources.Employee AS E
+-- Left join with SalesPerson table on BusinessEntityID
+LEFT JOIN 
+    Sales.SalesPerson AS S
+ON 
+    E.BusinessEntityID = S.BusinessEntityID
+-- Left join with Person table on BusinessEntityID
+LEFT JOIN 
+    Person.Person AS P
+ON 
+    P.BusinessEntityID = S.BusinessEntityID
+-- Filter rows where BusinessEntityID from Employee table matches BusinessEntityID from SalesPerson table
+WHERE 
+    E.BusinessEntityID = S.BusinessEntityID;
