@@ -90,3 +90,165 @@ I used a stored procedure to generate a monthly sales report:
 “CREATE PROCEDURE sp_MonthlySalesReport (@Month INT) AS BEGIN SELECT sp.FirstName + ’ ’ + sp.LastName AS SalesPersonName, s.StoreName AS StoreName, SUM(sod.TotalDue) AS TotalSales, dbo.fn_Commission(SUM(sod.TotalDue)) AS Commission FROM Sales.SalesPerson AS sp JOIN Sales.Store AS s ON sp.BusinessEntityID = s.BusinessEntityID JOIN Sales.SalesOrderHeader AS soh ON sp.SalesPersonID = soh.SalesPersonID JOIN Sales.SalesOrderDetail AS sod ON soh.SalesOrderID = sod.SalesOrderID WHERE MONTH(soh.OrderDate) = @Month GROUP BY sp.FirstName + ’ ’ + sp.LastName, s.StoreName; END;”
 Conclusion
 The report reveals that our sales performance depends on various factors such as the salesperson, the store location, and the order date. The report also shows how SQL techniques can help us manage, validate, and analyze the data more effectively and accurately.
+
+But I wiil save that for later now i am building out queries for out sales to information here is that info
+
+Tamicheal Brown-king
+CAN YOU FIX THIS  SELECT DISTINCT [SalesPersonID]
+  FROM [Sales].[Store]
+  LEFT JOIN [Sales].[SalesPerson]
+  ON [Sales].[Store].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID]
+  LEFT JOIN ;[HumanResources]
+  ON [Sales].[SalesPerson].[BusinessEntityID] = [HumanResources].[Employee].[BusinessEntityID]; code only 
+
+Certainly, here is the corrected code:
+
+css
+Copy code
+SELECT DISTINCT [SalesPersonID]
+FROM [Sales].[Store]
+LEFT JOIN [Sales].[SalesPerson]
+ON [Sales].[Store].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID]
+LEFT JOIN [HumanResources].[Employee]
+ON [Sales].[SalesPerson].[BusinessEntityID] = [HumanResources].[Employee].[BusinessEntityID];
+In the original code, there was a semicolon before the last join statement, which is not necessary and causes a syntax error. I removed that semicolon and added the missing table name [Employee] in the last join statement.
+
+
+
+
+Tamicheal Brown-king
+it works but my out here is not coming out correctly SELECT DISTINCT [SalesPersonID]
+    ,[HumanResources].[Employee].[JobTitle]
+FROM [Sales].[Store]
+LEFT JOIN [Sales].[SalesPerson]
+ON [Sales].[Store].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID]
+LEFT JOIN [HumanResources].[Employee]
+ON [Sales].[SalesPerson].[BusinessEntityID] = [HumanResources].[Employee].[BusinessEntityID];
+If you're not getting the desired output, it could be because the JobTitle column is not unique for each SalesPersonID in the [HumanResources].[Employee] table, resulting in duplicate rows being returned.
+
+You can try using an aggregate function like MAX or MIN to return only one JobTitle for each SalesPersonID, like this:
+
+css
+Copy code
+SELECT [SalesPersonID], MAX([HumanResources].[Employee].[JobTitle]) AS [JobTitle]
+FROM [Sales].[Store]
+LEFT JOIN [Sales].[SalesPerson]
+ON [Sales].[Store].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID]
+LEFT JOIN [HumanResources].[Employee]
+ON [Sales].[SalesPerson].[BusinessEntityID] = [HumanResources].[Employee].[BusinessEntityID]
+GROUP BY [SalesPersonID];
+This will return the maximum JobTitle for each SalesPersonID in the [HumanResources].[Employee] table. You can replace MAX with MIN if you prefer to return the minimum JobTitle instead.
+
+
+
+
+Tamicheal Brown-king
+write a statement to join the first  and last name of these query SELECT [HumanResources].[Employee].[JobTitle]
+    ,[HumanResources].[Employee].BusinessEntityID
+    FROM [HumanResources].[Employee]
+LEFT JOIN [Sales].[SalesPerson]
+ON [HumanResources].[Employee].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID]
+WHERE [HumanResources].[Employee].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID]; SELECT TOP (1000) [BusinessEntityID]
+      ,[PersonType]
+      ,[NameStyle]
+      ,[Title]
+      ,[FirstName]
+      ,[MiddleName]
+      ,[LastName]
+      ,[Suffix]
+      ,[EmailPromotion]
+      ,[AdditionalContactInfo]
+      ,[Demographics]
+      ,[rowguid]
+      ,[ModifiedDate]
+  FROM [AdventureWorks2016_EXT].[Person].[Person]
+Sure! Here's a statement that joins the first and last name of the two queries:
+
+css
+Copy code
+SELECT [HumanResources].[Employee].[JobTitle]
+    ,[HumanResources].[Employee].BusinessEntityID
+    ,[Person].[FirstName]
+    ,[Person].[LastName]
+FROM [HumanResources].[Employee]
+LEFT JOIN [Sales].[SalesPerson]
+ON [HumanResources].[Employee].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID]
+LEFT JOIN [AdventureWorks2016_EXT].[Person].[Person] AS [Person]
+ON [HumanResources].[Employee].[BusinessEntityID] = [Person].[BusinessEntityID];
+This query first joins the [HumanResources].[Employee] and [Sales].[SalesPerson] tables based on the BusinessEntityID column, and then it joins the resulting table with the [AdventureWorks2016_EXT].[Person].[Person] table, again based on the BusinessEntityID column. The SELECT statement selects the JobTitle, BusinessEntityID, FirstName, and LastName columns from the three tables.
+
+Note that this assumes that each employee in the [HumanResources].[Employee] table has a corresponding record in the [AdventureWorks2016_EXT].[Person].[Person] table, which may not be the case in some scenarios.
+
+
+
+
+Tamicheal Brown-king
+almost but I only want to add the names to the exisit query this gives all buinessID
+My apologies for the confusion earlier. Here's an updated statement that adds the first and last name columns to the existing query and filters the results by BusinessEntityID:
+
+css
+Copy code
+SELECT [HumanResources].[Employee].[JobTitle]
+    ,[HumanResources].[Employee].BusinessEntityID
+    ,[Person].[FirstName]
+    ,[Person].[LastName]
+FROM [HumanResources].[Employee]
+LEFT JOIN [Sales].[SalesPerson]
+ON [HumanResources].[Employee].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID]
+LEFT JOIN [AdventureWorks2016_EXT].[Person].[Person] AS [Person]
+ON [HumanResources].[Employee].[BusinessEntityID] = [Person].[BusinessEntityID]
+WHERE [HumanResources].[Employee].[BusinessEntityID] = 12345; -- Replace 12345 with the desired BusinessEntityID
+In this query, the WHERE clause filters the results to only include the row with the specified BusinessEntityID. You can replace 12345 with the actual value you want to filter by.
+
+
+
+
+Tamicheal Brown-king
+THIS is what I was looking for Can you add notes for TSQL
+Certainly! Here's the query with comments explaining each part:
+
+css
+Copy code
+-- Select the JobTitle and BusinessEntityID columns from the [HumanResources].[Employee] table
+-- and join it with the [Sales].[SalesPerson] table on the BusinessEntityID column.
+-- Then, join the resulting table with the [Person].[Person] table on the BusinessEntityID column
+-- to get the FirstName and LastName columns.
+SELECT [HumanResources].[Employee].[JobTitle]
+    ,[HumanResources].[Employee].[BusinessEntityID]
+    ,[Person].[FirstName]
+    ,[Person].[LastName]
+FROM [HumanResources].[Employee]
+LEFT JOIN [Sales].[SalesPerson]
+ON [HumanResources].[Employee].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID]
+LEFT JOIN [Person].[Person]
+ON [HumanResources].[Employee].[BusinessEntityID] = [Person].[BusinessEntityID]
+-- Filter the results to only include the row with BusinessEntityID = 12345
+WHERE [HumanResources].[Employee].[BusinessEntityID] = 12345;
+The SELECT statement specifies the columns to be returned in the result set: JobTitle, BusinessEntityID, FirstName, and LastName.
+The FROM clause specifies the source tables: [HumanResources].[Employee] is the primary table, while [Sales].[SalesPerson] and [Person].[Person] are joined to it using the LEFT JOIN operator.
+The ON clauses specify the join conditions. The first join condition is [HumanResources].[Employee].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID], which links the [HumanResources].[Employee] table to the [Sales].[SalesPerson] table on the BusinessEntityID column. The second join condition is [HumanResources].[Employee].[BusinessEntityID] = [Person].[BusinessEntityID], which links the resulting table to the [Person].[Person] table on the BusinessEntityID column.
+The WHERE clause filters the result set based on the specified condition. In this case, it filters the result set to only include the row with BusinessEntityID = 12345.
+The semicolon ; terminates the query. Although it is optional in some scenarios, it is good practice to include it to avoid syntax errors when multiple queries are executed together.
+
+
+-- Select the JobTitle and BusinessEntityID columns from the [HumanResources].[Employee] table
+-- and join it with the [Sales].[SalesPerson] table on the BusinessEntityID column.
+SELECT [HumanResources].[Employee].[JobTitle]
+    ,[HumanResources].[Employee].[BusinessEntityID]
+    ,[Person].[Person].[FirstName]
+    ,[LastName]
+FROM [HumanResources].[Employee]
+LEFT JOIN [Sales].[SalesPerson]
+ON [HumanResources].[Employee].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID]
+-- Join the resulting table with the [Person].[Person] table on the BusinessEntityID column
+-- to get the FirstName and LastName columns.
+LEFT JOIN [Person].[Person]
+ON [Person].[Person].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID]
+-- Filter the results to only include rows where BusinessEntityID matches between the tables
+WHERE [HumanResources].[Employee].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID];
+The SELECT statement specifies the columns to be returned in the result set: JobTitle, BusinessEntityID, FirstName, and LastName.
+The FROM clause specifies the source table: [HumanResources].[Employee].
+The first LEFT JOIN clause specifies the first join condition: [HumanResources].[Employee].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID], which links the [HumanResources].[Employee] table to the [Sales].[SalesPerson] table on the BusinessEntityID column.
+The second LEFT JOIN clause specifies the second join condition: [Person].[Person].[BusinessEntityID] = [Sales].[SalesPerson].[BusinessEntityID], which links the resulting table to the [Person].[Person] table on the BusinessEntityID column.
+The WHERE clause filters the result set based on the specified condition. In this case, it filters the result set to only include rows where BusinessEntityID matches between the [HumanResources].[Employee] and [Sales].[SalesPerson] tables.
+The semicolon ; terminates the query. Although it is optional in some scenarios, it is good practice to include it to avoid syntax errors when multiple queries are executed together.
