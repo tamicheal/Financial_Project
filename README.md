@@ -13,7 +13,8 @@ This is the Job details I'll work on a project to test my level of knowleage.
 
 I'll work on coding and reporting and ask as some many buiness questions as I can possible. 
 
-The sample company is AdventureWork_2016.BAK I have a personal server at home and an account with Azure. this is my training ground it's open to others to add! 
+The sample company is AdventureWork_2016.BAK I have a personal server at home and an account with Azure. This is my training ground it's open to others to add challenges to the data.
+
 
 # EDA Exploration Data analysis
 
