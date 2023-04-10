@@ -1,0 +1,18 @@
+JobTitle,BusinessEntityID,FirstName,LastName,CommissionPct,Bonus,SalesQuota,SalesYTD,SalesLastYear
+North American Sales Manager,274,Stephen,Jiang,0.00,0.00,NULL,559697.5639,0.00
+Sales Representative,275,Michael,Blythe,0.012,4100.00,300000.00,3763178.1787,1750406.4785
+Sales Representative,276,Linda,Mitchell,0.015,2000.00,250000.00,4251368.5497,1439156.0291
+Sales Representative,277,Jillian,Carson,0.015,2500.00,250000.00,3189418.3662,1997186.2037
+Sales Representative,278,Garrett,Vargas,0.01,500.00,250000.00,1453719.4653,1620276.8966
+Sales Representative,279,Tsvi,Reiter,0.01,6700.00,300000.00,2315185.611,1849640.9418
+Sales Representative,280,Pamela,Ansman-Wolfe,0.01,5000.00,250000.00,1352577.1325,1927059.178
+Sales Representative,281,Shu,Ito,0.01,3550.00,250000.00,2458535.6169,2073505.9999
+Sales Representative,282,José,Saraiva,0.015,5000.00,250000.00,2604540.7172,2038234.6549
+Sales Representative,283,David,Campbell,0.012,3500.00,250000.00,1573012.9383,1371635.3158
+Sales Representative,284,Tete,Mensa-Annan,0.019,3900.00,300000.00,1576562.1966,0.00
+Pacific Sales Manager,285,Syed,Abbas,0.00,0.00,NULL,172524.4512,0.00
+Sales Representative,286,Lynn,Tsoflias,0.018,5650.00,250000.00,1421810.9242,2278548.9776
+European Sales Manager,287,Amy,Alberts,0.00,0.00,NULL,519905.932,0.00
+Sales Representative,288,Rachel,Valdez,0.018,75.00,250000.00,1827066.7118,1307949.7917
+Sales Representative,289,Jae,Pak,0.02,5150.00,250000.00,4116871.2277,1635823.3967
+Sales Representative,290,Ranjit,Varkey Chudukatil,0.016,985.00,250000.00,3121616.3202,2396539.7601
